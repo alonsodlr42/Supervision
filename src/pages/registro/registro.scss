@@ -1,0 +1,45 @@
+page-registro{
+  .registro-content-device{
+    background-image: url('../assets/img/fondo-registro.jpg');
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+  }
+  .registro-content-web{
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+    background: rgba(12, 10, 26, 0.7);
+  }
+  .toolbar-background {
+    /*background: rgba(12, 10, 26, 0.7);*/
+    background: transparent !important;
+  }
+  .item{
+    color: white !important;
+    background-color: transparent !important;
+    padding-left: 0px;
+  }
+  .button-outline {
+    border:none !important;
+    color:#FFFFFF !important;
+    border-radius: 7px;
+    padding: 0 0.1rem;
+    background: rgba(255, 255, 255, 0.5) !important;
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+  .button-clear {
+    color:#FFFFFF !important;
+    background: transparent;
+    border: none;
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+}

@@ -1,0 +1,47 @@
+<ion-header>
+    <page-header [namePage]="namePage"></page-header>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-row justify-content-center>
+        <h2>Incidencia</h2>
+    </ion-row>
+
+
+    <ion-row justify-content-center padding>
+        <ion-badge color="light">{{incidencia.fecha | fecha:'dd MMMM yyyy, h:mm a'}}</ion-badge>
+    </ion-row>
+
+
+    <ion-row justify-content-start *ngIf="incidencia.tipo">
+        <p>Tipo: {{incidencia.tipo | uppercase}}</p>
+    </ion-row>
+
+
+    <ion-row justify-content-start *ngIf="incidencia.comentario">
+        <p text-wrap>Comentarios: {{incidencia.comentario}}</p>
+    </ion-row>
+
+
+    <ion-row justify-content-start *ngIf="!incidencia.comentario">
+        <p text-wrap>Sin comentarios</p>
+    </ion-row>
+
+
+    <ion-slides pager centeredSlides effect="slide" paginationType="bullets" style="height: 60%">
+        <ion-slide *ngFor="let url of incidencia.urlImagenes" style="background-color: transparent">
+            <img [src]="urlImgs+'/'+url" style="height:100%; width:100%"/>
+        </ion-slide>
+    </ion-slides>
+
+    <!--<ion-fab right bottom>-->
+        <!--<button ion-fab color="light" (click)="goBack()">-->
+            <!--<ion-icon name="arrow-round-back"-->
+                      <!--style="background-color: transparent; color: black; margin-top: 12px;"></ion-icon>-->
+        <!--</button>-->
+    <!--</ion-fab>-->
+
+
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-toolbar>
+  <ion-row>
+    <ion-col>
+      <img src="./assets/img/smile.svg" >
+      <label color="primary">{{cuenta.cuentahabiente.nombre}}</label>
+    </ion-col>
+    <ion-col col-2 >
+      <img src="./assets/img/exit.svg" >
+      <label  (click)="exitConfirm()" class="exit">Salir</label>
+    </ion-col>
+  </ion-row>
+  <ion-navbar [hideBackButton]="true" setBackButtonText="" color="primary">
+    <ion-row>
+      <ion-col>
+        <ion-buttons start>
+          <button (click)="navCtrl.pop()" *ngIf="namePage&&namePage!='Entregas'"
+                  style="margin-top: 13px; color: white !important; display: block !important;" ion-button clear>
+            <ion-icon style="background-color: transparent;" name="arrow-back"> Atr&aacute;s</ion-icon>
+          </button>
+          <button  *ngIf="namePage&&namePage=='Entregas'"
+                  style="margin-top: 13px;  !important; display: block !important;" ion-button clear>
+            <img style="margin-top: -10%;" src="./assets/img/square.svg"  class="logo"> &nbsp;&nbsp; Entregas
+          </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-toolbar>

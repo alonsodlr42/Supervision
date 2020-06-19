@@ -1,0 +1,109 @@
+<!--<ion-header>-->
+  <!--<ion-toolbar>-->
+    <!--<button ion-button clear icon-left (click)="back()">-->
+      <!--<ion-icon style="background-color: transparent; color: white; margin-top: 12px;" name="ios-arrow-back"></ion-icon>-->
+      <!--Atr&aacute;s-->
+    <!--</button>-->
+  <!--</ion-toolbar>-->
+<!--</ion-header>-->
+
+<ion-content padding [ngClass]="initWidth>630?'registro-content-web':'registro-content-device'">
+  <div class="opacity-content">
+    <ion-row>
+      <div style="width: 100%; height: 160px; text-align: center; align-content: center"><img style="width: 260px; height: 160px" src="assets/img/macorina-logo.svg"></div>
+    </ion-row>
+    <form (ngSubmit)="createCount(registroForm)" #registroForm="ngForm">
+
+      <ion-item>
+        <ion-label style="color: white" floating>Nombre</ion-label>
+        <ion-input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="cuenta.nombre" required></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="nombre.valid || nombre.pristine" class="error">
+        <ion-label style="color: red">
+          <ion-icon style="background-color: transparent; color: red !important;" name="information-circle"></ion-icon>
+          ¡Este campo es requerido!
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: white" floating>Apellidos</ion-label>
+        <ion-input type="text" name="apellidoPatern" #apellidoPatern="ngModel" [(ngModel)]="cuenta.apellidoPatern" required></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="apellidoPatern.valid || apellidoPatern.pristine" class="error">
+        <ion-label style="color: red">
+          <ion-icon style="background-color: transparent; color: red !important;" name="information-circle"></ion-icon>
+          ¡Este campo es requerido!
+        </ion-label>
+      </ion-item>
+
+      <!--<ion-item>
+        <ion-label style="color: white">Apellido materno</ion-label>
+        <ion-input type="text" name="apellidoMatern" #apellidoMatern="ngModel" [(ngModel)]="cuenta.apellidoMatern"></ion-input>
+      </ion-item><br>-->
+
+      <ion-item>
+        <ion-label style="color: white" floating>Tel&eacute;fono</ion-label>
+        <ion-input type="number" minlength="10" name="telefono" #telefono="ngModel" [(ngModel)]="cuenta.telefono"></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="telefono.valid || telefono.pristine" class="error">
+        <ion-label style="color: red">
+          <ion-icon style="background-color: transparent; color: red !important;" name="information-circle"></ion-icon>
+          ¡Este campo es requerido!
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: white" floating>Correo electr&oacute;nico</ion-label>
+        <ion-input type="email" name="email" #email="ngModel" [(ngModel)]="cuenta.email" myEmail required></ion-input>
+      </ion-item>
+
+      <!--<ion-item [hidden]="email.valid || email.pristine" class="error">
+        <ion-label style="color: red">
+          <ion-icon style="background-color: transparent; color: red !important;" name="information-circle"></ion-icon>
+          ¡Correo inv&aacute;lido!
+        </ion-label>
+      </ion-item><br>-->
+
+      <ion-item>
+        <ion-label style="color: white" floating>Contraseña</ion-label>
+        <ion-input type="password" minlength="8" name="password" #password="ngModel" [(ngModel)]="cuenta.password" required></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="password.valid || password.pristine" class="error">
+        <ion-label style="color: red">
+          <ion-icon style="background-color: transparent; color: red !important;" name="information-circle"></ion-icon>
+          ¡M&iacute;nimo 8 caracteres!
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color: white" floating>Confirmar contraseña</ion-label>
+        <ion-input type="password" minlength="8" name="confirmPassword" #confirmPassword="ngModel" [(ngModel)]="cuenta.confirmPassword" required></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="confirmPassword.valid || confirmPassword.pristine" class="error">
+        <ion-label style="color: red">
+          <ion-icon style="background-color: transparent; color: red !important;" name="information-circle"></ion-icon>
+          ¡M&iacute;nimo 8 caracteres!
+        </ion-label>
+      </ion-item>
+
+      <div style="margin-top: 20px; text-align: center">
+        <!--<p style="color: white">Al crear una cuenta, aceptas las <a>condiciones de uso</a> y el <a>aviso de privacidad</a> de macorina</p>-->
+        <p style="color: white !important;">Al crear tu cuenta, aceptas el <a (click)="goAviso()">aviso de privacidad</a> y los <a (click)="goTerminos()">t&eacute;rminos y condiciones</a></p>
+      </div>
+
+      <div style="text-align: center">
+        <button ion-button outline  type="submit" style="width: 85%; height: 70px; margin-top: 15px; background: rgba(255, 255, 255, 0.5) !important; color: white !important; font-size: x-large !important;">Crear cuenta</button>
+      </div>
+
+      <!--<div style="margin-top: 10px; text-align: center">
+        <p style="color: white">Si ya tienes una cuenta, inicia sesi&oacute;n desde <a (click)="goLogin()">aqu&iacute;</a></p>
+      </div>-->
+
+    </form><br>
+  </div>
+</ion-content>

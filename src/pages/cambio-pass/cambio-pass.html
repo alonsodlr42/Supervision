@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar no-padding="">
+    <ion-navbar [hideBackButton]="true" color="primary" no-padding="">
+      <ion-buttons left>
+        <button style="margin-top: 10px; color: #ffffff !important;" ion-button clear icon-left (click)="headerOrButtonAndroidBack()">
+          <ion-icon style="background-color: transparent; margin-top: 10px;" name="ios-arrow-back"></ion-icon>
+          <label style="color: #ffffff !important; margin-top: -10px;font-family: Roboto !important;font-weight: normal !important;text-transform: none !important; margin-left: -10px">Atr&aacute;s</label>
+        </button>
+      </ion-buttons>
+      <h3 style="color:white!important;text-align: center;font-family: Roboto !important;font-size:18px !important;margin-left:-5%;">Recuperaci&oacute;n de contraseña</h3>
+    </ion-navbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <form #cambioPass_form="ngForm">
+
+      <div style="margin-top: 10px; text-align: center">
+        <h1>Paso 1</h1>
+      </div>
+
+      <div style="margin-top: 20px; text-align: center">
+        <p>Captura tu cuenta de correo registrada, y te enviaremos las instrucciones</p>
+      </div>
+
+      <ion-item>
+        <ion-label mode="md" floating>*Correo electr&oacute;nico</ion-label>
+        <ion-input type="email" name="email" #email="ngModel" [(ngModel)]="data.email" required></ion-input>
+      </ion-item>
+
+      <ion-item [hidden]="email.valid || email.pristine" class="error">
+        <ion-label style="color: red">
+          <ion-icon style="background-color: transparent; color: red !important;" name="information-circle"></ion-icon>
+          ¡El correo es requerido!
+        </ion-label>
+      </ion-item><br>
+
+      <button *ifMobile ion-button outline style="width: 100%; height: 50px; font-size: medium; margin-top: 5px" (click)="goPaso2()" [disabled]="!cambioPass_form.valid">Continuar</button>
+      <button *ifWeb ion-button class="web-button" style="margin-top: 5px" (click)="goPaso2()" [disabled]="!cambioPass_form.valid">Continuar</button>
+
+    </form>
+  </ion-list>
+</ion-content>

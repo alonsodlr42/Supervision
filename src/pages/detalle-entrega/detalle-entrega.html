@@ -1,0 +1,194 @@
+<ion-header>
+    <page-header [namePage]="namePage"></page-header>
+</ion-header>
+
+
+
+<ion-content padding>
+    <!--<ion-row>-->
+        <!--<h2>Información de pedido</h2>-->
+    <!--</ion-row>-->
+
+    <ion-row justify-content-center>
+        <h1>Total: {{ pedidoSeleccionado.venta.monto | precio}}</h1>
+    </ion-row>
+
+    <ion-row  style="margin: -5px">
+        <!--<ion-col>-->
+            <p>
+                <strong>Folio:</strong> {{pedidoSeleccionado.venta.folio}}
+                <br>
+                Fecha de pedido: {{ pedidoSeleccionado.venta.fecha | fecha}}
+                <br>
+                Fecha de entrega: {{ pedidoSeleccionado.venta.fechaEntrega | fecha}}
+            </p>
+        <!--</ion-col>-->
+    </ion-row>
+
+
+    <ion-row  style="margin: -5px">
+        <!--<ion-col>-->
+            <p><strong>Cliente:</strong> {{pedidoSeleccionado.venta.cuenta.cuentahabiente.nombreCompleto}}</p>
+        <!--</ion-col>-->
+    </ion-row>
+
+    <ion-row (click)="geolocalizar(pedidoSeleccionado.href)" style="margin: -10px">
+        <ion-col col>
+            <p><strong>Direcci&oacute;n de entrega: </strong>{{pedidoSeleccionado.direccion}}</p>
+        </ion-col>
+        <ion-col col-auto>
+            <ion-icon item-end (click)="geolocalizar(pedidoSeleccionado.href)" style="background-color: transparent; color: #C0C0C0; zoom:2.5; height:100%; width: 85%; margin: 0px 0px 0px 0px" name="pin"></ion-icon>
+        </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="pedidoSeleccionado.venta.comentario" text-wrap  style="margin: -5px">
+        <p>
+            <strong>Instrucciones especiales:</strong> {{pedidoSeleccionado.venta.comentario}}</p>
+        <!--<h2>Instrucciones especiales: </h2>-->
+        <!--<p *ngFor="let respuesta of pedidoSeleccionado.venta.respuestas"-->
+           <!--style="float: left; margin-left: 5px;">{{respuesta.valor}}</p>-->
+    </ion-row>
+
+
+
+
+
+
+    <ion-row>
+        <p style="color: #AFADAD; margin: 40px -10px 0px 0px;; font-size:large"><b>Detalle del pedido</b></p>
+    </ion-row>
+
+    <hr style="margin-top: 0px">
+
+    <div *ngFor="let detalle of pedidoSeleccionado.venta.detalle">
+        <ion-row *ngIf="!detalle.referencia.includes('CHILD')" style="height: auto; margin-top: 10px">
+            <ion-col col-auto>
+                <img style="width: 80px; height: 80px" [src]="detalle.item.producto.nombreImagen">
+            </ion-col>
+            <ion-col col style="margin-left: 0px; padding:0px">
+                <div>
+                    <ion-item style="min-height: 2rem; height: 50px; padding:0px" no-lines>
+                        <p style="font-size:small" text-wrap>{{detalle?.descripcion}}</p>
+                        <p style="font-size:small">{{detalle?.cantidad}} unidad(es)</p>
+                        <label style="width: auto; font-size: small !important;height: 70%" item-end>{{detalle?.total | precio}}</label>
+                    </ion-item>
+                    <div *ngFor="let modificador of detalle.modificadores" style="margin-bottom: 5px; padding:0px">
+                        <ion-item style="min-height: 2rem; height: 20px; margin-bottom: -5px; padding:0px" no-lines>
+                            <p style="font-size:x-small">{{modificador.cantidad}} {{modificador.descripcion}}</p>
+                            <label style="width: auto; font-size: small !important; padding:0px" item-end>{{modificador?.total | precio}}</label>
+
+                        </ion-item>
+                        <ion-row>
+                            <p *ngIf="modificador.notas" style="margin-left: 10px;text-align: justify;text-justify: inter-word" text-wrap>&#9492;&#32;{{modificador.notas}}</p>
+                            <!--<p style="margin-left: 10px;text-align: justify;text-justify: inter-word" text-wrap>&#9492;&#32;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias reprehenderit rerum voluptas! Assumenda labore tempora veniam. Aperiam beatae, ea et eveniet, hic illum, impedit incidunt praesentium quam similique ut voluptate.</p>-->
+                        </ion-row>
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div *ngIf="pedidoSeleccionado.estatus == 'ASIG_ENTREGA' ">
+        <ion-row>
+            <p style="color: #AFADAD; margin: 40px -10px 0px 0px;; font-size:large"><b>Información de entrega</b></p>
+        </ion-row>
+
+        <hr style="margin-top: 0px">
+
+        <ion-row style="margin: -5px">
+            <!--<ion-col>-->
+                <p>
+                    Estatus pedido: {{pedidoSeleccionado.estatus}}
+                    <br>
+                    Estatus pago: {{pedidoSeleccionado.venta.estatusPago}}
+                </p>
+            <!--</ion-col>-->
+        </ion-row>
+        <ion-row>
+            <ion-label stacked style="color: #AFADAD">Comentarios:</ion-label>
+        </ion-row>
+        <ion-row>
+
+            <ion-textarea placeholder="Escriba sus comentarios..."
+                          style="color: #000000; border: solid 1px #AFADAD" wrap="hard" rows="3" maxlength="500"
+                          type="text"
+                          [(ngModel)]="coment"></ion-textarea>
+        </ion-row>
+
+        <ion-row (click)="goEntregar()" justify-content-center>
+            <!--<ion-icon icon-end name="send" style="background-color: transparent; color: #AFADAD; zoom:2.0"></ion-icon>-->
+            <button ion-button outline  >Entregar</button>
+        </ion-row>
+
+    </div>
+    <div *ngIf="pedidoSeleccionado.estatus == 'ENTREGADO' ">
+        <ion-row>
+            <p style="color: #AFADAD; margin: 40px -10px 0px 0px;; font-size:large"><b>Pedido Entregado</b></p>
+        </ion-row>
+
+        <hr style="margin-top: 0px">
+
+        <ion-row>
+            <ion-col col-12 *ngIf="pedidoSeleccionado.comentariosEntrega">
+                <ion-label style="color: #AFADAD;" stacked>Comentarios:</ion-label>
+                <!--<ion-textarea style="color: #5A5A5A; border: solid 1px #AFADAD " rows="1" type="text"-->
+                              <!--[value]="pedidoSeleccionado.comentariosEntrega" [readonly]="true"></ion-textarea>-->
+                <p text-wrap>{{pedidoSeleccionado.comentariosEntrega}}</p>
+            </ion-col>
+            <ion-col col-12 *ngIf="!pedidoSeleccionado.comentariosEntrega">
+                <ion-label style="color: #AFADAD; margin: 0px" stacked>Sin comentarios</ion-label>
+            </ion-col>
+        </ion-row>
+    </div>
+
+
+
+
+
+
+
+    <ion-row style="margin: 40px -5px 5px -5px">
+        <ion-col align-self-center col-10>
+            <p style="color: #AFADAD; margin: 0px -10px 0px 0px; font-size:large"><b>Incidencias</b></p>
+        </ion-col>
+        <ion-col col-2 *ngIf="pedidoSeleccionado.estatus == 'ASIG_ENTREGA' ">
+            <ion-icon (click)="actualizarIncidencia()" name="add" style="font-weight: bold; background-color: transparent; color: #AFADAD;zoom:3.0; height:100%;"></ion-icon>
+        </ion-col>
+    </ion-row>
+
+    <hr style="margin-top: 5px">
+
+    <ion-item *ngFor="let incidencia of pedidoSeleccionado.incidencias; let idx = index" style="margin: 5px -15px 10px -15px">
+        <ion-row align-items-center>
+            <ion-col col-10>
+                <ion-row><p>Tipo: {{incidencia.tipo}}</p></ion-row>
+                <ion-row><p>Fecha: {{incidencia.fecha  | fecha:'d/MM/yyyy, h:mm a'}}</p></ion-row>
+                <ion-row text-wrap *ngIf="incidencia.comentario"><p>Comentarios: {{incidencia.comentario}}</p></ion-row>
+                <ion-row text-wrap *ngIf="!incidencia.comentario"><p>Sin comentarios</p></ion-row>
+            </ion-col>
+            <ion-col col-2>
+                <ion-icon *ngIf="incidencia.urlImagenes" name="images" (click)="mostrarImagenes(incidencia)" style="background-color: transparent; color: #AFADAD; zoom:2.5; height:100%"></ion-icon>
+                <ion-icon *ngIf="!incidencia.urlImagenes" name="images" style="background-color: transparent; color: #ece9e9; zoom:2.5; height:100%"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-item>
+
+    <ion-item *ngIf="pedidoSeleccionado.incidencias.length == 0" style="margin: -15px -15px 10px -15px">
+        <h2>No hay incidencias</h2>
+    </ion-item>
+
+
+
+</ion-content>

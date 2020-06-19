@@ -1,0 +1,126 @@
+<ion-content fullscreen="true" class="login-content-web fondo-content divPdd" *ngIf="reacomodo==false">
+  <div style="text-align: center;height: 25%; " class="logo-login">
+    <img src="assets/imgs/yeboLogo.svg" style="margin-top: 6%;" alt=""/>
+  </div>
+  <div lines="none" style="padding: 6%;background: white;border-radius: 30px 30px 0px 0px;">
+    <div>
+      <ion-row padding-top="">
+        <div style="width: 100%; height: 160px; text-align: center; align-content: center">
+          <h3 style="color: #09458E!important;">Iniciar sesión</h3>
+          <br>
+          <p class="tituloheader" style="margin-top: -3%;color: #8B8B8B !important;" align="center">
+            Supervisión
+          </p>
+        </div>
+      </ion-row>
+
+      <ion-list no-lines="none" style="margin-top: -80px;">
+        <form #login_form="ngForm">
+          <ion-label position="floating" class="labelCampos">Usuario</ion-label>
+          <ion-item no-lines="none" align="center" style="align-content: center">
+            <ion-input type="text" name="username" #username="ngModel" [(ngModel)]="user.username"
+                       required></ion-input>
+          </ion-item>
+
+          <ion-item [hidden]="username.valid || username.pristine" class="error">
+            <ion-label style="color: red">
+              <ion-icon style="background-color: transparent; color: red !important;"
+                        name="information-circle"></ion-icon>
+              ¡Este campo es requerido!
+            </ion-label>
+          </ion-item>
+          <br>
+
+          <ion-label position="floating" class="labelCampos">Contraseña</ion-label>
+          <ion-item>
+            <ion-input type="password" name="password" #password="ngModel" [(ngModel)]="user.password"
+                       required></ion-input>
+          </ion-item>
+
+          <ion-item [hidden]="password.valid || password.pristine" class="error">
+            <ion-label style="color: red">
+              <ion-icon style="background-color: transparent; color: red !important;"
+                        name="information-circle"></ion-icon>
+              ¡Este campo es requerido!
+            </ion-label>
+          </ion-item>
+          <br>
+          <div style="text-align: right; margin-top: 10px">
+            <label (click)="goRecoverPass()" style="width: 100%; color: #2875BB !important;"><a>Recuperar contraseña</a></label>
+          </div>
+          <div style="text-align: center">
+            <button type="button" (click)="loginFunc(login_form)" ion-button outline
+                    style="width: 85%; height: 70px; margin-top: 25px; background: #2875BB !important; color: white !important; font-size: x-large !important;">
+              Entrar
+            </button>
+          </div>
+        </form>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+
+<ion-content fullscreen="true" class="login-content-responsive fondo-content-web divPdd" *ngIf="reacomodo==true">
+
+  <div align="center" style="margin-top: 5%">
+    <div align="center" style="text-align: center;background: #09458E;width: 40%;border-radius: 15px 15px 0px 0px;">
+      <img style="width: 60%" src="assets/imgs/yeboLogo.svg" alt=""/>
+    </div>
+  </div>
+  <div>
+    <div style="margin-left: 30%;padding: 0px;width: 40%;background: white;border-radius: 0px 0px 15px 15px;">
+      <ion-row padding-top="">
+        <div style="width: 100%; height: 160px; text-align: center; align-content: center">
+          <h3 style="color: #09458E!important;">Iniciar sesión</h3>
+          <br>
+          <p class="tituloheader" style="margin-top: -3%;color: #8B8B8B !important;" align="center">
+            Supervisión
+          </p>
+        </div>
+      </ion-row>
+
+      <ion-list no-lines="none" style="margin-top: -80px;padding: 40px;">
+        <form #login_form="ngForm">
+          <ion-label position="floating" class="labelCampos">Usuario</ion-label>
+          <ion-item no-lines="none" align="center" style="align-content: center">
+            <ion-input type="text" name="username" #username="ngModel" [(ngModel)]="user.username"
+                       required></ion-input>
+          </ion-item>
+
+          <ion-item [hidden]="username.valid || username.pristine" class="error">
+            <ion-label style="color: red">
+              <ion-icon style="background-color: transparent; color: red !important;"
+                        name="information-circle"></ion-icon>
+              ¡Este campo es requerido!
+            </ion-label>
+          </ion-item>
+          <br>
+
+          <ion-label position="floating" class="labelCampos">Contraseña</ion-label>
+          <ion-item>
+            <ion-input type="password" name="password" #password="ngModel" [(ngModel)]="user.password"
+                       required></ion-input>
+          </ion-item>
+
+          <ion-item [hidden]="password.valid || password.pristine" class="error">
+            <ion-label style="color: red">
+              <ion-icon style="background-color: transparent; color: red !important;"
+                        name="information-circle"></ion-icon>
+              ¡Este campo es requerido!
+            </ion-label>
+          </ion-item>
+          <br>
+          <div style="text-align: right; margin-top: 10px">
+            <label (click)="goRecoverPass()" style="width: 100%; color: #2875BB !important;"><a>Recuperar contraseña</a></label>
+          </div>
+          <div style="text-align: center">
+            <button type="button" (click)="loginFunc(login_form)" ion-button outline
+                    style="width: 85%; height: 70px; margin-top: 25px; background: #2875BB !important; color: white !important; font-size: x-large !important;">
+              Entrar
+            </button>
+          </div>
+        </form>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

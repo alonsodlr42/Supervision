@@ -1,0 +1,13 @@
+{
+  "name": "Yebo Mensajeros",
+  "short_name": "Mensajeros",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/imgs/logoFlink2.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "background_color": "#25b6d1",
+  "theme_color": "#25b6d1"
+}

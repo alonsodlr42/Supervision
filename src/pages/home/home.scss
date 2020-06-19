@@ -1,0 +1,88 @@
+//navegador
+.platform-core{
+  .home-content-device{
+    background-image: url('../assets/img/fondo-intro.jpg');
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+  }
+  .home-content-web{
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+    background: rgba(12, 10, 26, 0.7);
+  }
+  .button-outline {
+   /* border:none !important;*/
+    /*color:#FFFFFF !important;*/
+    border-radius: 7px;
+    padding: 0 1rem;
+    background: transparent !important;
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+  .button-outline:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+    color: #AFADAD !important;
+  }
+  .button-clear {
+    /*color:#FFFFFF !important;*/
+    background: transparent;
+    border: none;
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+
+  .header-img{
+    width: 100%; height: 100%;
+  }
+  .body-content{
+    margin-top:20%; text-align: center
+  }
+
+}
+
+//default : para dispositivos
+page-home {
+  .home-content-device{
+    background-image: url('../assets/img/fondo-intro.jpg');
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+  }
+  .home-content-web{
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+    background: rgba(12, 10, 26, 0.7);
+  }
+  .toolbar-background {
+    background: transparent !important;
+  }
+
+  .button-clear {
+    color: color($colors, primary, base) !important;
+    /*background: transparent;*/
+    border: none;
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+
+  .header-img{
+    width: 260px; height: 160px
+  }
+  .body-content{
+    margin-top:10%; text-align: center
+  }
+}

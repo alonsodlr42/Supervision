@@ -1,0 +1,273 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+@import "../../node_modules/ionic2-auto-complete/auto-complete";
+
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  src: url(../assets/fonts/Roboto-Regular.ttf) format("truetype");
+}
+/*@font-face {
+  font-family: Roboto;
+  font-weight: normal;
+  src: url(../assets/fonts/Roboto-ThinItalic.ttf) format("ttf");
+}*/
+ion-app.md [padding] .scroll-content {
+  padding: 0px;
+}
+.footer-class {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background: none;
+}
+.inputborder{
+  border-radius: 6px 6px 6px 6px
+}
+.tituloheader {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  text-align: center;
+  color: rgba(51, 50, 56, 0.84);
+}
+.fondo-content {
+    --background: #09458E;
+  }
+.fondo-content-web {
+    --background: #E5E5E5;
+  }
+body {
+  font-family: Roboto !important;
+  font-weight: normal !important;
+  text-transform: none !important;
+}
+
+h1,h2,h3,p,label{
+  font-family: Roboto !important;
+  color: #AFADAD !important;
+}
+
+ion-icon {
+  &[class*="icon-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1.5em;
+    height: 1.5em;
+    text-transform: none;
+  }
+  // custom icons
+  &[class*="icon-cart"] {
+    color: #AFADAD;
+    mask-image: url(../assets/img/cart_shoes.svg);
+  }
+  &[class*="icon-person"] {
+    mask-image: url(../assets/img/person.svg);
+  }
+  &[class*="icon-existencia"] {
+    mask-image: url(../assets/img/existencia.svg);
+  }
+  &[class*="icon-calendar"] {
+    mask-image: url(../assets/img/calendar.svg);
+  }
+  &[class*="icon-compras"] {
+    mask-image: url(../assets/img/compras.svg);
+  }
+  &[class*="icon-trash"] {
+    mask-image: url(../assets/img/icon-trash.svg);
+  }
+  &[class*="icon-edit"] {
+    mask-image: url(../assets/img/icon-edit.svg);
+  }
+  &[class*="icon-tabhome"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/tab-home.svg);
+  }
+  &[class*="icon-home"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/home.svg);
+  }
+  &[class*="icon-search"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/serch.svg);
+  }
+  &[class*="icon-shopping"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/shopping.svg);
+  }
+  &[class*="icon-profile"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/profile.svg);
+  }
+  &[class*="icon-nofavorite"] {
+    mask-image: url(../assets/img/nofavorite.svg);
+  }
+  &[class*="icon-creditcard"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/creditcard.svg);
+  }
+  &[class*="icon-location"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/location.svg);
+  }
+  &[class*="icon-edit"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/edit.svg);
+  }
+  &[class*="icon-favoritos"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/favoritos.svg);
+  }
+  &[class*="icon-help"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/help.svg);
+  }
+  &[class*="icon-order"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/order.svg);
+  }
+  &[class*="icon-privacy"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/privacy.svg);
+  }
+  &[class*="icon-logout"] {
+    background-color: #AFADAD;
+    mask-image: url(../assets/img/logout.svg);
+  }
+  &[class*="icon-valid"] {
+    background-color: #23B248;
+    mask-image: url(../assets/img/valid.svg);
+  }
+  &[class*="icon-phone-revert"] {
+    background-color: #23B248;
+    mask-image: url(../assets/img/phone-revert.svg);
+  }
+  &[class*="icon-cancelacion"] {
+    background-color: #F80000;
+    mask-image: url(../assets/img/cancelacion.svg);
+  }
+  &[class*="icon-produccion"] {
+    background-color: #FFB600;
+    mask-image: url(../assets/img/en-produccion.svg);
+  }
+  &[class*="icon-pendiente"] {
+    background-color: #FFB600;
+    mask-image: url(../assets/img/pendiente.svg);
+  }
+  &[class*="icon-solicitado"] {
+    background-color: #23B248;
+    mask-image: url(../assets/img/solicitado.svg);
+  }
+  &[class*="icon-exit"] {
+    mask-image: url(../assets/img/exit.svg);
+  }
+  &[class*="icon-smile"] {
+    mask-image: url(../assets/img/smile.svg);
+  }
+}
+.back-button-icon{
+  background:transparent !important;
+}
+
+ion-toolbar{
+  .toolbar-background {
+    background-color: white;
+  }
+  label{
+    font-family: Roboto !important;
+    font-weight: normal !important;
+  }
+}
+
+ion-item{
+  border-radius: 8px;
+  padding: 0 0.1rem;
+  font-family: Roboto !important;
+  font-weight: normal !important;
+}
+
+.loading-md .loading-wrapper {
+  border: none !important;
+  border-radius: 4px !important;
+  max-width: 280px;
+  max-height: 90%;
+  color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5) !important;
+  -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  padding: 20px !important;
+}
+
+.alert-md .alert-wrapper{
+  min-width: 316px !important;
+}
+
+.header-ios .toolbar-ios:last-child .toolbar-background-ios {
+  border-width: 0 0 0px;
+}
+
+.popover-md{
+  background: rgba(12, 10, 26, 0.7);
+}
+
+.toolbar .searchbar-ios .searchbar-input {
+  background: rgba(0, 0, 0, 0.01);
+}
+
+page-menu-inicio{
+  .tile-content.iconic .icon {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    font-size: 64px;
+    //top: 50%;
+    margin-top: -85px;
+    //left: 40%;
+    margin-left: -75px;
+    text-align: center;
+  }
+}
+
+page-orden-dia{
+  .item-inner{
+    border-bottom: 0px !important;
+  }
+}
+
+page-produccion{
+  .item-inner{
+    border-bottom: 0px !important;
+  }
+}
+
+page-detalle-produccion{
+  .item-inner{
+    border-bottom: 0px !important;
+  }
+}
+
+page-empacado{
+  .item-inner{
+    border-bottom: 0px !important;
+  }
+}

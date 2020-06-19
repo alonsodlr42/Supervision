@@ -1,0 +1,84 @@
+.divPdd {
+  padding-top: 16px;
+  padding-bottom: 0px;
+}
+.item-input ion-input{
+  background: rgba(216, 220, 230, 0.3);
+  border-radius: 6px 6px 6px 6px;
+}
+.labelCampos{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  color: #455A64;
+}
+
+.input-cover {
+  border-radius: 6px 6px 6px 6px;
+  width: 99% !important;
+  --background: rgba(216, 220, 230, 0.3);
+  z-index: -1;
+}
+.text-input-md {
+  color: black !important;
+}
+.input input-md ng-untouched ng-pristine ng-invalid{
+  width: 90%;
+}
+.login-content-responsive {
+  display: block;
+  background-size: cover;
+  overflow: auto;
+  z-index: -1;
+  background-position: 0px 0px;
+  background: #E5E5E5;
+}
+page-login {
+
+  .login-content-device {
+    background-image: url('../assets/img/fondo-registro.jpg');
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+  }
+
+  .login-content-web {
+    display: block;
+    background-size: cover;
+    overflow: auto;
+    z-index: -1;
+    background-position: 0px 0px;
+    background: #153D86;
+  }
+  .item {
+    color: white !important;
+    background-color: transparent !important;
+    padding-left: 0px;
+  }
+
+  .toolbar-background {
+    background: transparent !important;
+  }
+
+  .button-outline {
+    border: none !important;
+    color: #FFFFFF !important;
+    border-radius: 7px;
+    padding: 0 0.1rem;
+    background: rgba(255, 255, 255, 0.5) !important;
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+
+  .button-clear {
+    color: #FFFFFF !important;
+    background: transparent;
+    border: none;
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    text-transform: none !important;
+  }
+}

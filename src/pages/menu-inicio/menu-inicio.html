@@ -1,0 +1,44 @@
+<ion-header>
+  <page-header></page-header>
+</ion-header>
+
+<ion-content padding>
+
+    <div class="tile-container menu-fondo-color">
+
+      <div class="tile-large bg-color-logo" style="border-radius: 25px;">
+        <div class="tile-content">
+          <div>
+            <div style="text-align: center;background-color: rgba(28, 20, 20, 0.46); position: absolute; padding-left: 10px; padding-right: 10px; padding-bottom: 2px;">
+              <label class="fg-white" >Versi&oacute;n:  {{version}}</label>
+            </div>
+            <!--<img style="margin-top: 15%;" src="./assets/img/logo.svg" data-format="square">-->
+            <img style="margin-top: 15%;" src="./assets/img/square.svg" data-format="square" class="logo">
+          </div>
+        </div>
+      </div>
+
+      <div class="tile bg-color fg-white redondeado" data-role="tile" on-tap="goEntregas()" *ngIf="rol">
+        <div class="tile-content iconic">
+          <span class="icon mif-package"></span>
+          <span class="tile-label" style="color: #575656" ng-cloak><h1>Entregas</h1></span>
+        </div>
+      </div>
+
+      <!--<div class="tile bg-color fg-white redondeado" data-role="tile" on-tap="goInventario()">
+        <div class="tile-content iconic">
+          <span class="icon mif-stock"></span>
+          <span class="tile-label" style="color: #575656" ng-cloak>Inventario</span>
+        </div>
+      </div>-->
+
+      <div class="tile bg-color fg-white redondeado" data-role="tile" on-tap="exitConfirm()">
+        <div class="tile-content iconic ">
+          <span class="icon mif-exit"></span>
+          <span class="tile-label" style="color: #575656" ng-cloak><h1>Salir</h1></span>
+        </div>
+      </div>
+
+    </div>
+
+</ion-content>

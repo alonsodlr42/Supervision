@@ -1,0 +1,86 @@
+page-entregas {
+  .dividerCustom {
+    .item-inner {
+      border-bottom: 1px solid #dedede !important;
+      border-radius: 0px !important;
+    }
+  }
+
+  .scroll-detalles {
+    .scroll-content {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+
+    .item {
+      padding-left: 0px !important;
+    }
+
+    .item-inner {
+      border: none !important;
+    }
+  }
+
+  .highlight {
+    background-color: #f3f3f3 !important;
+  }
+  .rounded{
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px; /* future proofing */
+    -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  }
+  .tabs{
+/*    width: 85% !important;*/
+    border: solid 1px #e6e3e3;
+    margin-top: 10px;
+  }
+
+  .tabSelected{
+    border-bottom: solid 2px #153D86;
+  }
+  .tab{
+    height: 30px;
+    font-family: Roboto,serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* identical to box height */
+    text-transform: uppercase;
+
+    color: #000000 !important;
+
+
+  }
+
+  .button-tomar{
+    background-color: #2875BB !important;
+    border-radius: 4px;
+  }
+  .ver{
+    color: #2875BB !important;
+  }
+  .infolabel{
+    color: #7C859B;
+    font-family: Roboto, serif ;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .infolabelresaltado{
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(35, 35, 39, 0.84);
+  }
+
+}
+
+

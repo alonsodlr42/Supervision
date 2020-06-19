@@ -1,0 +1,7 @@
+{
+  "name": "mensajeros-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
