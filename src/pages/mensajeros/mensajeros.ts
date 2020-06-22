@@ -14,6 +14,7 @@ import {Settings} from "../../app/common/settings";
 import {LaunchNavigator} from "@ionic-native/launch-navigator";
 import * as moment from "moment";
 import {Utils} from "../../app/common/utils";
+import {Mensajeros} from "../../app/common/mensajeros";
 
 const NO_IMAGE: string = 'assets/img/no-image.jpg';
 
@@ -48,14 +49,27 @@ export class EntregasPage {
     loading: Loading;
 
     listB64Image: any;
-    optionSeletced="disponibles";
+    optionSeletced="todos";
     classSelected="tabSelected";
+
+    activo:number=0;
+    inactivo:number=0;
 
     optionsLaunchNavigator: any;
 
+    mensajeros=[];
+
     constructor(public navCtrl: NavController, public navParams: NavParams, private entregasService: EntregasService, public menuCtrl: MenuController, public loadingCtrl: LoadingController, private launchNavigator: LaunchNavigator, public platform: Platform) {
-        this.namePage = 'Entregas';
-        this.ordenHeader = 'Entregas';
+        this.mensajeros = Mensajeros.mensajeros;
+        for(let i of this.mensajeros){
+          if(i.actividad == true){
+            this.activo ++;
+          }else {
+            this.inactivo ++;
+          }
+        }
+        this.namePage = 'Mensajeros';
+        this.ordenHeader = 'Mensajeros';
 
         this.minDate = this.obtenerFechaActual();
         this.maxDate = new Date().getFullYear() + 1;
@@ -69,7 +83,7 @@ export class EntregasPage {
         this.listB64Image = [];
         setTimeout(() => {
           this.loading = this.loadingCtrl.create({content: 'Por favor espere...'});
-          this.loading.present();
+          /*this.loading.present();*/
           this.getPedidosDisponibles();
           this.getMisPedidos(this.fechaGeneracion);
         },15000);
@@ -79,9 +93,13 @@ export class EntregasPage {
 
     }
 
+    seleccionaPerfil(user){
+      this.navCtrl.push(DetalleEntregaPage, user);
+    }
+
     ionViewDidEnter() {
         this.loading = this.loadingCtrl.create({content: 'Por favor espere...'});
-        this.loading.present();
+        /*this.loading.present();*/
         this.getPedidosDisponibles();
         this.getMisPedidos(this.fechaGeneracion);
         this.searchQuery = '';
@@ -90,7 +108,7 @@ export class EntregasPage {
     changeDate(_event) {
         // console.log('changeDate : ' + this.fechaGeneracion);
         this.loading = this.loadingCtrl.create({content: 'Por favor espere...'});
-        this.loading.present();
+        /*this.loading.present();*/
         this.pedidoSeleccionado = null;
         this.getMisPedidos(this.fechaGeneracion);
         this.searchQuery = '';
@@ -130,6 +148,7 @@ export class EntregasPage {
       let fecha = moment(new Date()).format("YYYY-MM-DD");
         // console.log('getPedidos')
       const cuentasIds = this.cuentas.map(cuenta => cuenta.id);
+      /*this.loading.present();*/
         this.entregasService.getPedidosDisponibles(cuentasIds, fecha).then(response => {
             this.pedidosDisponibles = response.datos;
             this.pedidosDisponiblesFiltro = this.pedidosDisponibles;
@@ -141,7 +160,7 @@ export class EntregasPage {
                 this.hayPedidos = false;
             }
             console.log("pedidos disponibles", this.pedidosDisponibles);
-            this.loading.dismiss();
+            /*this.loading.dismiss();*/
         }).catch(error => {
           console.error('hubo un error',error);
           Utils.doAlert("Algo salio mal en la consulta de pedidos disponibles");
@@ -157,7 +176,7 @@ export class EntregasPage {
         this.contarUnidadesDelPedido(this.mispedidos);
       }
       console.log("mis pedidos", this.mispedidosFiltro);
-      this.loading.dismiss();
+      /*this.loading.dismiss();*/
     }).catch(error => {
       console.error('hubo un error',error);
       Utils.doAlert("Algo salio mal en la consulta de mis pedidos");

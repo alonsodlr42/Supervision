@@ -1,0 +1,58 @@
+<ion-header>
+  <page-header [namePage]="namePage"></page-header>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="divPerfil">
+    <br>
+    <br>
+    <ion-avatar class="avatar item-avatar">
+      <img style="border-radius: 40px;border: 3px solid #E1E6EF;" src="{{pedidoSeleccionado.picture.medium}}"
+           *ngIf="pedidoSeleccionado.picture.medium">
+      <img style="border-radius: 40px;border: 3px solid #E1E6EF;"
+           src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+           *ngIf="!pedidoSeleccionado.picture.medium">
+    </ion-avatar>
+    <ion-list no-lines="none">
+      <ion-item>
+        <ion-label align="center">
+          <ion-label class="texto1">{{pedidoSeleccionado.nombre}}</ion-label>
+          <h2 class="texto2">{{pedidoSeleccionado.telefono}}</h2>
+        </ion-label>
+      </ion-item>
+
+      <table width="100%">
+        <tr align="center">
+          <td colspan="2" style="padding: 20px;" class="texto2">Entregas realizadas:</td>
+        </tr>
+        <tr align="center">
+          <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.delivery}}</b></td>
+          <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.mensajeria}}</b></td>
+        </tr>
+        <tr align="center">
+          <td style="width: 50%" class="texto2">Delivery</td>
+          <td style="width: 50%" class="texto2">Mensajería</td>
+        </tr>
+      </table>
+    </ion-list>
+    <ion-row style="background: white">
+      <ion-col col-1>
+      </ion-col>
+      <ion-col>
+        <div class="rounded tabs">
+          <ion-row >
+            <ion-col (click)="optionSeletced='Activas'" style="border: 1px solid #E1E6EF;background: white;border-radius: 10px 0px 0px 10px;text-align: center">
+              <div style="background:white;" [ngClass]="{'tabSelected': optionSeletced === 'Activas'}" class="tab">Activas</div>
+            </ion-col>
+            <ion-col (click)="optionSeletced='Historial'" style="border: 1px solid #E1E6EF;background: white;text-align: center;border-radius: 0px 10px 10px 0px;">
+              <div style="background:white;" [ngClass]="{'tabSelected': optionSeletced === 'Historial'}" class="tab">Historial</div>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+      <ion-col col-1>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
