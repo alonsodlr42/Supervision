@@ -9,7 +9,7 @@ import {Registro} from "../registro/registro";
 
 import {CambioPass} from "../cambio-pass/cambio-pass";
 import {MessageService} from "../../app/MessageService";
-import {EntregasPage} from "../entregas/entregas";
+import {EntregasPage} from "../mensajeros/mensajeros";
 
 @Component({
   selector: 'page-login',

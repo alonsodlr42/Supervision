@@ -5,7 +5,7 @@ import {Login} from "../login/login";
 import {Utils} from "../../app/common/utils";
 import {MenuInicioService} from "./menu-inicio-service";
 import {Settings} from "../../app/common/settings";
-import {EntregasPage} from "../entregas/entregas";
+import {EntregasPage} from "../mensajeros/mensajeros";
 import {HttpWrapper} from "../../app/common/http-wrapper";
 
 @Component({
@@ -34,7 +34,7 @@ export class MenuInicio{
 
         this.loading.present();
 
-        this.namePage='Control de entregas';
+        this.namePage='Control de mensajeros';
         this.url=Settings.urlPrefix.replace("/rest", "");
         this.urlImgs=Settings.urlImgPrefix?Settings.urlImgPrefix:this.url;
 

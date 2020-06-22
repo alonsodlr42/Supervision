@@ -8,10 +8,11 @@
     <br>
     <br>
     <ion-avatar class="avatar item-avatar">
-      <img style="border-radius: 40px;border: 3px solid #E1E6EF;" src="{{pedidoSeleccionado.picture.medium}}"
+      <img style="border-radius: 40px;border: 3px solid #E1E6EF;width: 80px;"
+           src="{{pedidoSeleccionado.picture.medium}}"
            *ngIf="pedidoSeleccionado.picture.medium">
-      <img style="border-radius: 40px;border: 3px solid #E1E6EF;"
-           src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+      <img style="border-radius: 40px;border: 3px solid #E1E6EF;width: 80px;"
+           src="assets/imgs/avatar.svg"
            *ngIf="!pedidoSeleccionado.picture.medium">
     </ion-avatar>
     <ion-list no-lines="none">
@@ -27,8 +28,10 @@
           <td colspan="2" style="padding: 20px;" class="texto2">Entregas realizadas:</td>
         </tr>
         <tr align="center">
-          <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.delivery}}</b></td>
-          <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.mensajeria}}</b></td>
+          <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.delivery}}</b>
+          </td>
+          <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.mensajeria}}</b>
+          </td>
         </tr>
         <tr align="center">
           <td style="width: 50%" class="texto2">Delivery</td>
@@ -37,22 +40,71 @@
       </table>
     </ion-list>
     <ion-row style="background: white">
-      <ion-col col-1>
-      </ion-col>
       <ion-col>
         <div class="rounded tabs">
-          <ion-row >
-            <ion-col (click)="optionSeletced='Activas'" style="border: 1px solid #E1E6EF;background: white;border-radius: 10px 0px 0px 10px;text-align: center">
-              <div style="background:white;" [ngClass]="{'tabSelected': optionSeletced === 'Activas'}" class="tab">Activas</div>
+          <ion-row>
+            <ion-col (click)="optionSeletced='Activas'"
+                     style="border: 1px solid #E1E6EF;background: white;border-radius: 10px 0px 0px 10px;text-align: center">
+              <div style="background:white;" [ngClass]="{'tabSelected': optionSeletced === 'Activas'}" class="tab">
+                Activas
+              </div>
             </ion-col>
-            <ion-col (click)="optionSeletced='Historial'" style="border: 1px solid #E1E6EF;background: white;text-align: center;border-radius: 0px 10px 10px 0px;">
-              <div style="background:white;" [ngClass]="{'tabSelected': optionSeletced === 'Historial'}" class="tab">Historial</div>
+            <ion-col (click)="optionSeletced='Historial'"
+                     style="border: 1px solid #E1E6EF;background: white;text-align: center;border-radius: 0px 10px 10px 0px;">
+              <div style="background:white;" [ngClass]="{'tabSelected': optionSeletced === 'Historial'}" class="tab">
+                Historial
+              </div>
             </ion-col>
           </ion-row>
         </div>
       </ion-col>
-      <ion-col col-1>
-      </ion-col>
     </ion-row>
+
+    <div *ngIf="optionSeletced=='Activas'" align="center" style="background: #f5f6f8;">
+      <div style="background: #F9F9F9;">
+        <br>
+        <br>
+        <ion-label style="text-align: left">&nbsp;&nbsp;&nbsp;<b>Total ({{activos.length}})</b></ion-label>
+        <br>
+        <ion-card *ngFor="let detalle of activos" class="{{detalle.class}} card-md">
+            <br>
+            <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
+            <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
+            <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
+            <p style="text-align: left;">&nbsp;&nbsp;{{detalle.entregaA}}</p>
+            <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==false">&nbsp;&nbsp;Ver detalle <span class="icon mif-chevron-thin-down"></span></p>
+            <p style="text-align: justify;padding: 10px;" *ngIf="detalle.hideShow==true">{{detalle.detalle}}</p>
+            <br>
+            <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver menos <span class="icon mif-chevron-thin-up"></span></p>
+        </ion-card>
+      </div>
+      <br>
+      <br>
+      <br>
+    </div>
+
+    <div *ngIf="optionSeletced=='Historial'" align="center" style="background: #f5f6f8;">
+      <div style="background: #F9F9F9;">
+        <br>
+        <br>
+        <ion-label style="text-align: left">&nbsp;&nbsp;&nbsp;<b>Total ({{historial.length}})</b></ion-label>
+        <br>
+        <ion-card *ngFor="let detalle of historial" class="{{detalle.class}} card-md">
+          <br>
+          <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
+          <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
+          <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
+          <p style="text-align: left;">&nbsp;&nbsp;{{detalle.entregaA}}</p>
+          <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==false">&nbsp;&nbsp;Ver detalle <span class="icon mif-chevron-thin-down"></span></p>
+          <p style="text-align: justify;padding: 10px;" *ngIf="detalle.hideShow==true">{{detalle.detalle}}</p>
+          <br>
+          <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver menos <span class="icon mif-chevron-thin-up"></span></p>
+        </ion-card>
+      </div>
+      <br>
+      <br>
+      <br>
+    </div>
+
   </div>
 </ion-content>

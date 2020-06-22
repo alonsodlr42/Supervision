@@ -1,10 +1,9 @@
-<ion-toolbar>
+<ion-toolbar style="background: #153D86">
   <ion-row>
-    <ion-col>
-      <img src="./assets/img/smile.svg" >
-      <label color="primary">{{cuenta.cuentahabiente.nombre}}</label>
+    <ion-col align="center">
+      <img src="./assets/imgs/yeboLogo.svg"  class="logo">
     </ion-col>
-    <ion-col col-2 >
+    <ion-col col-2 class="btn-salir">
       <img src="./assets/img/exit.svg" >
       <label  (click)="exitConfirm()" class="exit">Salir</label>
     </ion-col>
@@ -13,13 +12,13 @@
     <ion-row>
       <ion-col>
         <ion-buttons start>
-          <button (click)="navCtrl.pop()" *ngIf="namePage&&namePage!='Entregas'"
+          <button (click)="navCtrl.pop()" *ngIf="namePage&&namePage!='Mensajeros'"
                   style="margin-top: 13px; color: white !important; display: block !important;" ion-button clear>
-            <ion-icon style="background-color: transparent;" name="arrow-back"> Atr&aacute;s</ion-icon>
+            <ion-icon style="background-color: transparent;" name="arrow-back">&nbsp;&nbsp;{{namePage}}</ion-icon>
           </button>
-          <button  *ngIf="namePage&&namePage=='Entregas'"
-                  style="margin-top: 13px;  !important; display: block !important;" ion-button clear>
-            <img style="margin-top: -10%;" src="./assets/img/square.svg"  class="logo"> &nbsp;&nbsp; Entregas
+          <button  *ngIf="namePage&&namePage=='Mensajeros'"
+                  style="text-transform: none !important;margin-top: 0px;  !important; display: block !important;" ion-button clear>
+            <b style="font-size: 20px;">Mensajeros</b>
           </button>
         </ion-buttons>
       </ion-col>

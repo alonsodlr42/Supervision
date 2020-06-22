@@ -38,7 +38,19 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  activas: (
+    base: #FFAA00,
+    contrast: #ffffff
+  ),
+  entregados: (
+    base: #1CB14D,
+    contrast: #ffffff
+  ),
+  cancelados: (
+    base: #EC1C25,
+    contrast: #ffffff
+  )
 );
 
 

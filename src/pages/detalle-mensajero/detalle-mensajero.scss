@@ -1,22 +1,63 @@
 page-detalle-entrega {
-  .avatar{
+  .borde-estatus-ac{
+    border-left : 5px solid color($colors, activas, base);;
+  }
+  .borde-estatus-en{
+    border-left : 5px solid color($colors, entregados, base);;
+  }
+  .borde-estatus-ca{
+    border-left : 5px solid color($colors, cancelados, base);;
+  }
+  .hide-show{
+    font-family: Roboto !important;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    color: #153D86 !important;
+  }
+  .fechas {
+    font-family: Roboto !important;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+    color: #5A6570 !important;
+  }
+
+  .tipo {
+    font-family: Roboto !important;
+    font-style: normal;
+    text-align: left;
+    color: #153D86 !important;
+  }
+
+  .local {
+    font-family: Roboto !important;
+    font-style: normal;
+    text-align: left;
+    color: #323C47 !important;
+  }
+
+  .avatar {
     margin: auto;
   }
-  .item-avatar  {
-    width:100% !important;
-    height : 100% !important;
-    max-width: 100px !important;  //any size
+
+  .item-avatar {
+    width: 100px !important;
+    height: 100% !important;
+    max-width: 100px !important; //any size
     max-height: 100px !important; //any size
   }
-  .divPerfil{
-    background-color:#ffffff;
+
+  .divPerfil {
+    background-color: #ffffff;
     border-radius: 0px 0px 15px 15px;
-    height:45%;
+    height: 45%;
     width: 100%;
     position: absolute;
     display: block;
   }
-  .texto1{
+
+  .texto1 {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -24,7 +65,8 @@ page-detalle-entrega {
     line-height: 19px;
     color: #000000;
   }
-  .texto2{
+
+  .texto2 {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -32,26 +74,31 @@ page-detalle-entrega {
     line-height: 16px;
     color: #323C47;
   }
+
   .label-md {
     margin: 0px 15px 0px 0;
   }
-  .rounded{
+
+  .rounded {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px; /* future proofing */
     -khtml-border-radius: 10px; /* for old Konqueror browsers */
   }
-  .tabSelected{
+
+  .tabSelected {
     border-bottom: solid 2px #153D86;
   }
-  .tabs{
+
+  .tabs {
     /*    width: 85% !important;*/
     border: solid 1px #e6e3e3;
     margin-top: 10px;
   }
-  .tab{
+
+  .tab {
     height: 30px;
-    font-family: Roboto,serif;
+    font-family: Roboto, serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;

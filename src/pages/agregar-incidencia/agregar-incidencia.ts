@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Loading, LoadingController, NavController, NavParams, ToastController} from 'ionic-angular';
 import {Camera, CameraOptions} from "@ionic-native/camera";
-import {EntregasService} from "../entregas/entregas-service";
+import {MensajerosService} from "../mensajeros/mensajeros-service";
 import Compressor from 'compressorjs';
 import {SessionData} from "../../app/common/session-data";
 
@@ -20,7 +20,7 @@ export class AgregarIncidenciaPage {
     callback;
     loading: Loading;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private entregasService: EntregasService, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private entregasService: MensajerosService, public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
         let params = this.navParams.data;
         this.idPedido = params.idPedido;
         this.callback = params.callback;

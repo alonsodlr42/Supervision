@@ -29,10 +29,10 @@ import {StockFilter} from "./common/pipes";
 import {MenuInicio} from "../pages/menu-inicio/menu-inicio";
 import {HeaderPage} from "../pages/header/header";
 import {MenuInicioService} from "../pages/menu-inicio/menu-inicio-service";
-import {EntregasPage} from "../pages/entregas/entregas";
-import {DetalleEntregaPage} from "../pages/detalle-entrega/detalle-entrega";
+import {EntregasPage} from "../pages/mensajeros/mensajeros";
+import {DetalleEntregaPage} from "../pages/detalle-mensajero/detalle-mensajero";
 import {AgregarIncidenciaPage} from "../pages/agregar-incidencia/agregar-incidencia";
-import {EntregasService} from '../pages/entregas/entregas-service';
+import {MensajerosService} from '../pages/mensajeros/mensajeros-service';
 import {ModalImgPage} from '../pages/modal-img/modal-img';
 import {CambioPass} from '../pages/cambio-pass/cambio-pass';
 import {CambioPass2} from '../pages/cambio-pass/cambio-pass-2/cambio-pass-2';
@@ -118,7 +118,7 @@ registerLocaleData(es);
     OneSignalServices,
     CambioPassService,
     MenuInicioService,
-    EntregasService,
+    MensajerosService,
     MessageService,
     SQLite,
     CardIO,

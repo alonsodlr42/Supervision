@@ -3,7 +3,7 @@ import {AlertController, NavController, NavParams, Platform} from "ionic-angular
 import {SessionData} from "../../../app/common/session-data";
 import {MenuInicio} from "../../menu-inicio/menu-inicio";
 import {LoginServices} from "../../login/login-service";
-import {EntregasPage} from "../../entregas/entregas";
+import {EntregasPage} from "../../mensajeros/mensajeros";
 
 @Component({
   selector: 'page-confirmacion-registro',

@@ -14,7 +14,7 @@ import {Login} from "../pages/login/login";
 import {MenuInicio} from "../pages/menu-inicio/menu-inicio";
 import {Utils} from "./common/utils";
 import {OneSignalServices} from "../pages/notificaciones/onesignal-service";
-import {EntregasPage} from "../pages/entregas/entregas";
+import {EntregasPage} from "../pages/mensajeros/mensajeros";
 @Component({
     templateUrl: 'app.html'
 })

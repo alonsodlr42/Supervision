@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpWrapper} from "../../app/common/http-wrapper";
 @Injectable()
-export class EntregasService {
+export class MensajerosService {
 
     constructor(private httpr: HttpWrapper) {
     }
