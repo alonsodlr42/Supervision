@@ -66,40 +66,126 @@
         <br>
         <ion-label style="text-align: left">&nbsp;&nbsp;&nbsp;<b>Total ({{activos.length}})</b></ion-label>
         <br>
-        <ion-card *ngFor="let detalle of activos" class="{{detalle.class}} card-md">
-            <br>
-            <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
-            <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
-            <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
-            <p style="text-align: left;">&nbsp;&nbsp;{{detalle.entregaA}}</p>
-            <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==false">&nbsp;&nbsp;Ver detalle <span class="icon mif-chevron-thin-down"></span></p>
-            <p style="text-align: justify;padding: 10px;" *ngIf="detalle.hideShow==true">{{detalle.detalle}}</p>
-            <br>
-            <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver menos <span class="icon mif-chevron-thin-up"></span></p>
+        <ion-card *ngFor="let detalle of activos | paginate: { itemsPerPage: 5, currentPage: pageActiva }"
+                  class="{{detalle.class}} card-md">
+          <br>
+          <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
+          <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
+          <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
+          <p style="text-align: left;">&nbsp;&nbsp;{{detalle.entregaA}}</p>
+          <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==false">&nbsp;&nbsp;Ver detalle <span
+            class="icon mif-chevron-thin-down"></span></p>
+          <p style="text-align: justify;padding: 10px;" *ngIf="detalle.hideShow==true">{{detalle.detalle}}</p>
+          <br>
+          <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver menos <span
+            class="icon mif-chevron-thin-up"></span></p>
         </ion-card>
+        <pagination-controls (pageChange)="pageActiva = $event"></pagination-controls>
       </div>
       <br>
       <br>
       <br>
     </div>
 
+
     <div *ngIf="optionSeletced=='Historial'" align="center" style="background: #f5f6f8;">
       <div style="background: #F9F9F9;">
         <br>
         <br>
-        <ion-label style="text-align: left">&nbsp;&nbsp;&nbsp;<b>Total ({{historial.length}})</b></ion-label>
+        <table width="100%">
+          <tr>
+            <td width="50%" align="left">
+              <h2 class="fechas" style="font-size: 1.6rem;">&nbsp;&nbsp;&nbsp;<b>Total ({{cantidadHistorial}})</b></h2>
+            </td>
+            <td width="50%" align="right">
+              <h2 class="fechas" style="font-size: 1.4rem;text-align: right;">Filtrar por:
+                <select name="filtro" id="filtro" [(ngModel)]="opcionSeleccionado" (change)="cambioFiltro()">
+                  <option value="all">Todas</option>
+                  <option value="dev">Delivery</option>
+                  <option value="msg">Mensajería</option>
+                </select>
+              </h2>
+            </td>
+          </tr>
+        </table>
         <br>
-        <ion-card *ngFor="let detalle of historial" class="{{detalle.class}} card-md">
-          <br>
-          <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
-          <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
-          <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
-          <p style="text-align: left;">&nbsp;&nbsp;{{detalle.entregaA}}</p>
-          <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==false">&nbsp;&nbsp;Ver detalle <span class="icon mif-chevron-thin-down"></span></p>
-          <p style="text-align: justify;padding: 10px;" *ngIf="detalle.hideShow==true">{{detalle.detalle}}</p>
-          <br>
-          <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver menos <span class="icon mif-chevron-thin-up"></span></p>
-        </ion-card>
+        <div *ngIf="opcionSeleccionado=='all'">
+          <ion-card *ngFor="let detalle of historial | paginate: { itemsPerPage: 5, currentPage: pageHistorial }"
+                    class="{{detalle.class}} card-md">
+            <br>
+            <table width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
+                </td>
+                <td width="50%" align="right">
+                  <p class="hide-show" style="text-align: right !important;margin-right: 10px;"
+                     (click)="detalleHistorial(detalle)">&nbsp;&nbsp;Ver detalle</p>
+                </td>
+              </tr>
+            </table>
+            <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
+            <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
+            <p style="text-align: left;">&nbsp;&nbsp;{{detalle.estatus.id}} {{detalle.estatus.fecha}}</p>
+            <br>
+            <p class="hide-show" (click)="detalleHistorial(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver
+              menos
+              <span class="icon mif-chevron-thin-up"></span></p>
+          </ion-card>
+          <pagination-controls (pageChange)="pageHistorial = $event"></pagination-controls>
+        </div>
+
+        <div *ngIf="opcionSeleccionado=='dev'">
+          <ion-card *ngFor="let detalle of listDelivery | paginate: { itemsPerPage: 5, currentPage: pageHistorialDev }"
+                    class="{{detalle.class}} card-md">
+            <br>
+            <table width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
+                </td>
+                <td width="50%" align="right">
+                  <p class="hide-show" style="text-align: right !important;margin-right: 10px;"
+                     (click)="detalleHistorial(detalle)">&nbsp;&nbsp;Ver detalle</p>
+                </td>
+              </tr>
+            </table>
+            <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
+            <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
+            <p style="text-align: left;">&nbsp;&nbsp;{{detalle.estatus.id}} {{detalle.estatus.fecha}}</p>
+            <br>
+            <p class="hide-show" (click)="detalleHistorial(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver
+              menos
+              <span class="icon mif-chevron-thin-up"></span></p>
+          </ion-card>
+          <pagination-controls (pageChange)="pageHistorialDev = $event"></pagination-controls>
+        </div>
+
+        <div *ngIf="opcionSeleccionado=='msg'">
+          <ion-card *ngFor="let detalle of listMensajeria | paginate: { itemsPerPage: 5, currentPage: pageHistorialMsg }"
+                    class="{{detalle.class}} card-md">
+            <br>
+            <table width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
+                </td>
+                <td width="50%" align="right">
+                  <p class="hide-show" style="text-align: right !important;margin-right: 10px;"
+                     (click)="detalleHistorial(detalle)">&nbsp;&nbsp;Ver detalle</p>
+                </td>
+              </tr>
+            </table>
+            <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
+            <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
+            <p style="text-align: left;">&nbsp;&nbsp;{{detalle.estatus.id}} {{detalle.estatus.fecha}}</p>
+            <br>
+            <p class="hide-show" (click)="detalleHistorial(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver
+              menos
+              <span class="icon mif-chevron-thin-up"></span></p>
+          </ion-card>
+          <pagination-controls (pageChange)="pageHistorialMsg = $event"></pagination-controls>
+        </div>
       </div>
       <br>
       <br>

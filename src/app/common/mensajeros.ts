@@ -226,7 +226,7 @@ export class Mensajeros {
     },
     {
       fecha: "09/06/2020",
-      tipo: "Delivery",
+      tipo: "Mensajería",
       local: "SOTOMAYOR ROCHE E HIJOS",
       entregaA: "Envío de documentos 1",
       detalle: "Retirar de dirección Ana de Ayala N 27-130 y La Touta y entregar en Barrio Vista Hermosa Calle B y Pasaje B, Lote 22 Las Casas, Tanya Saragozin +593 96-991-6096. Puede entregar hasta viernes max.",
@@ -259,7 +259,7 @@ export class Mensajeros {
     },
     {
       fecha: "08/06/2020",
-      tipo: "Delivery",
+      tipo: "Mensajería",
       local: "SOTOMAYOR ROCHE E HIJOS",
       entregaA: "Envío de documentos 001",
       detalle: "Retirar de dirección Ana de Ayala N 27-130 y La Touta y entregar en Barrio Vista Hermosa Calle B y Pasaje B, Lote 22 Las Casas, Tanya Saragozin +593 96-991-6096. Puede entregar hasta viernes max.",

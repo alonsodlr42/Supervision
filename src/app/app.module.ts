@@ -31,7 +31,6 @@ import {HeaderPage} from "../pages/header/header";
 import {MenuInicioService} from "../pages/menu-inicio/menu-inicio-service";
 import {EntregasPage} from "../pages/mensajeros/mensajeros";
 import {DetalleEntregaPage} from "../pages/detalle-mensajero/detalle-mensajero";
-import {AgregarIncidenciaPage} from "../pages/agregar-incidencia/agregar-incidencia";
 import {MensajerosService} from '../pages/mensajeros/mensajeros-service';
 import {ModalImgPage} from '../pages/modal-img/modal-img';
 import {CambioPass} from '../pages/cambio-pass/cambio-pass';
@@ -46,6 +45,7 @@ import { Camera } from '@ionic-native/camera';
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import {PrecioPipe} from '../pipes/PrecioPipe';
 import {FechaPipe} from '../pipes/FechaPipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 registerLocaleData(es);
 
@@ -61,7 +61,6 @@ registerLocaleData(es);
     HeaderPage,
     EntregasPage,
     DetalleEntregaPage,
-    AgregarIncidenciaPage,
     ModalImgPage,
     CambioPass,
     CambioPass2,
@@ -77,16 +76,17 @@ registerLocaleData(es);
     AutoCompleteModule,
     NgCalendarModule,
     IonicModule.forRoot(MyApp, {
-        scrollPadding: false,
-        scrollAssist: true,
-        autoFocusAssist: false,
-        monthNames:['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
-      cancelText:'Cancelar',
-      doneText:'Continuar'
+      scrollPadding: false,
+      scrollAssist: true,
+      autoFocusAssist: false,
+      monthNames: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+      cancelText: 'Cancelar',
+      doneText: 'Continuar'
     }),//,{mode:'ios'}),
     HttpModule,
     HttpClientModule,
-    OrderModule
+    OrderModule,
+    NgxPaginationModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -96,7 +96,6 @@ registerLocaleData(es);
     HeaderPage,
     EntregasPage,
     DetalleEntregaPage,
-    AgregarIncidenciaPage,
     ModalImgPage,
     CambioPass,
     CambioPass2,
