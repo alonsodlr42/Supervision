@@ -46,19 +46,14 @@
       <div style="background: #F9F9F9;padding: 10px">
         <ion-label style="text-align: left">&nbsp;&nbsp;Con actividad ({{activo}})</ion-label>
         <ion-list *ngFor="let perfil of mensajeros">
-          <ion-item *ngIf="perfil.actividad == true" (click)="seleccionaPerfil(perfil)">
+          <ion-item *ngIf="perfil.numeroDePedidos > 0" (click)="seleccionaPerfil(perfil)">
             <table width="100%">
               <tr>
-                <td width="15%"><img class="izquierda"
-                                     style="width: 80px;border-radius: 40px;border: 3px solid #E1E6EF;"
-                                     src="{{perfil.picture.medium}}"
-                                     *ngIf="perfil.picture.medium !=''">
-                  <img class="izquierda" style="width: 80px;border-radius: 40px;border: 3px solid #E1E6EF;"
-                       src="assets/imgs/avatar.svg"
-                       *ngIf="perfil.picture.medium ==''"></td>
-                <td width="70%"><h2>&nbsp;&nbsp;{{perfil.nombre}}</h2></td>
+                <td width="15%">
+                  <img class="izquierda" style="width: 80px;border-radius: 40px;border: 3px solid #E1E6EF;" src="assets/imgs/avatar.svg"></td>
+                <td width="70%"><h2>&nbsp;&nbsp;{{perfil.cuentaRepartidor.cuentahabiente.nombreCompleto}}</h2></td>
                 <td width="15%" align="right">
-                  <ion-badge color="warning" slot="end" class="new-badge">70</ion-badge>
+                  <ion-badge color="warning" slot="end" class="new-badge">{{perfil.numeroDePedidos}}</ion-badge>
                 </td>
               </tr>
             </table>
@@ -70,19 +65,14 @@
       <div style="background: #F9F9F9;padding: 10px">
         <ion-label style="text-align: left">&nbsp;&nbsp;Sin actividad ({{inactivo}})</ion-label>
         <ion-list *ngFor="let perfil of mensajeros">
-          <ion-item *ngIf="perfil.actividad == false" (click)="seleccionaPerfil(perfil)">
+          <ion-item *ngIf="perfil.numeroDePedidos == 0" (click)="seleccionaPerfil(perfil)">
             <table width="100%">
               <tr>
-                <td width="15%"><img class="izquierda"
-                                     style="width: 80px;border-radius: 40px;border: 3px solid #E1E6EF;"
-                                     src="{{perfil.picture.medium}}"
-                                     *ngIf="perfil.picture.medium !=''">
-                  <img class="izquierda" style="width: 80px;border-radius: 40px;border: 3px solid #E1E6EF;"
-                       src="assets/imgs/avatar.svg"
-                       *ngIf="perfil.picture.medium ==''"></td>
-                <td width="70%"><h2>&nbsp;&nbsp;{{perfil.nombre}}</h2></td>
+                <td width="15%">
+                  <img class="izquierda" style="width: 80px;border-radius: 40px;border: 3px solid #E1E6EF;" src="assets/imgs/avatar.svg"></td>
+                <td width="70%"><h2>&nbsp;&nbsp;{{perfil.cuentaRepartidor.cuentahabiente.nombreCompleto}}</h2></td>
                 <td width="15%" align="right">
-                  <ion-badge color="warning" slot="end" class="new-badge">70</ion-badge>
+                  <ion-badge color="warning" slot="end" class="new-badge">{{perfil.numeroDePedidos}}</ion-badge>
                 </td>
               </tr>
             </table>

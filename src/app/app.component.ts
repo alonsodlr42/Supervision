@@ -88,7 +88,7 @@ export class MyApp {
         });
     }
   autologin(username: String, password: String) {
-    console.log("autologin  username=%s,password=%s ", username, password);
+    /*console.log("autologin  username=%s,password=%s ", username, password);*/
     let user: any = {username: username, password: password};
 
     this.loginServices.loginFunc(user, false, () => {

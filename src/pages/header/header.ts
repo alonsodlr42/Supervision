@@ -31,6 +31,8 @@ export class HeaderPage {
     console.log("Exit...");
     Utils.showConfirm({
       title: "Cerrar sesión", message: "¿Estás seguro que deseas cerrar tu sesión?", okCallback: () => {
+        localStorage.removeItem('session_data');
+        localStorage.removeItem('repartidores');
         localStorage.removeItem('logo');
         sessionStorage.removeItem('j_username');
         sessionStorage.removeItem('j_password');

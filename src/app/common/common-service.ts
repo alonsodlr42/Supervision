@@ -17,8 +17,17 @@ export class CommonService {
         return response as any[];
       }
     );
-
   }
+
+  getRepartidoresByPrograma(idPrograma:any){
+    var url="/users/repartidores/numero/pedidos/"+idPrograma;
+    return this.httpr.post(url).then(
+      response => {
+        return response as any[];
+      }
+    );
+  }
+
   getTemaByPrograma(idPrograma:any){
     var url="/flink/getTemaIon2ByPrograma/"+idPrograma;
     return this.httpr.post(url).then(

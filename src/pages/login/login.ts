@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {App, NavController, NavParams, Platform} from "ionic-angular";
+import {App, LoadingController, NavController, NavParams, Platform} from "ionic-angular";
 import {LoginServices} from "./login-service";
 import {Utils} from "../../app/common/utils";
 import {SessionData} from "../../app/common/session-data";
@@ -20,10 +20,6 @@ import {EntregasPage} from "../mensajeros/mensajeros";
 })
 export class Login {
   user: any = {username: "", password: ""};
-  dataResponse: any = {};
-  cuentahabiente: any = {};
-  cuentaSelected: any = {};
-  cuentas = [];
   initWidth: any;
   initHeight: any;
   reacomodo: boolean = false;
@@ -31,7 +27,10 @@ export class Login {
   constructor(public platform: Platform,
               public navCtrl: NavController,
               public navParams: NavParams,
-              private loginServices: LoginServices, public appCtrl: App, public messageService: MessageService) {
+              private loginServices: LoginServices,
+              public appCtrl: App,
+              public messageService: MessageService,
+              public loadingController: LoadingController) {
     if (window.screen.width <= 576) {
       this.reacomodo = false;
     } else {
@@ -46,10 +45,15 @@ export class Login {
     if (this.navParams.data == null) {
       this.user = {username: '', password: ''};
     } else if (navParams.data != null && localStorage.getItem('userActive') == 'false') {
+      const loading = this.loadingController.create({
+        content: 'Espere un momento...'
+      });
+      loading.present();
       this.loginServices.loginFunc(navParams.data, true, () => {
         this.navCtrl.setRoot(EntregasPage);
         localStorage.setItem('userActive', 'false');
       })
+      loading.dismiss();
     } else {
       this.user = {username: '', password: ''};
     }
@@ -63,9 +67,14 @@ export class Login {
 
   loginFunc(form): void {
     if (form.valid) {
+      const loading = this.loadingController.create({
+        content: 'Espere un momento...'
+      });
+      loading.present();
       this.loginServices.loginFunc(this.user, true, () => {
         this.navCtrl.setRoot(EntregasPage);
       })
+      loading.dismiss();
     } else {
       Utils.doAlert({title: 'Error', message: 'Usuario y contraseña son requeridos'});
     }

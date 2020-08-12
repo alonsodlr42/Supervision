@@ -8,18 +8,14 @@
     <br>
     <br>
     <ion-avatar class="avatar item-avatar">
-      <img style="border-radius: 40px;border: 3px solid #E1E6EF;width: 80px;"
-           src="{{pedidoSeleccionado.picture.medium}}"
-           *ngIf="pedidoSeleccionado.picture.medium">
-      <img style="border-radius: 40px;border: 3px solid #E1E6EF;width: 80px;"
-           src="assets/imgs/avatar.svg"
-           *ngIf="!pedidoSeleccionado.picture.medium">
+      <img style="border-radius: 40px;border: 3px solid #E1E6EF;width: 80px;" src="assets/imgs/avatar.svg">
     </ion-avatar>
     <ion-list no-lines="none">
       <ion-item>
         <ion-label align="center">
-          <ion-label class="texto1">{{pedidoSeleccionado.nombre}}</ion-label>
-          <h2 class="texto2">{{pedidoSeleccionado.telefono}}</h2>
+          <ion-label
+            class="texto1">{{pedidoSeleccionado.user.cuentaRepartidor.cuentahabiente.nombreCompleto}}</ion-label>
+          <h2 class="texto2">{{pedidoSeleccionado.user.cuentaRepartidor.cuentahabiente.telefono}}</h2>
         </ion-label>
       </ion-item>
 
@@ -28,10 +24,10 @@
           <td colspan="2" style="padding: 20px;" class="texto2">Entregas realizadas:</td>
         </tr>
         <tr align="center">
-          <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.delivery}}</b>
+          <!--<td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.delivery}}</b>
           </td>
           <td style="width: 50%" style="padding: 20px;" class="texto2"><b>{{pedidoSeleccionado.entregas.mensajeria}}</b>
-          </td>
+          </td>-->
         </tr>
         <tr align="center">
           <td style="width: 50%" class="texto2">Delivery</td>
@@ -72,10 +68,14 @@
           <h2 class="fechas">&nbsp;&nbsp;{{detalle.fecha}}</h2>
           <h3 class="tipo">&nbsp;&nbsp;{{detalle.tipo}}</h3>
           <p class="local">&nbsp;&nbsp;{{detalle.local}}</p>
-          <p style="text-align: left;">&nbsp;&nbsp;{{detalle.entregaA}}</p>
+          <p style="text-align: left;">&nbsp;&nbsp;{{detalle.ubicacionEntrega.direccion}}</p>
           <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==false">&nbsp;&nbsp;Ver detalle <span
             class="icon mif-chevron-thin-down"></span></p>
-          <p style="text-align: justify;padding: 10px;" *ngIf="detalle.hideShow==true">{{detalle.detalle}}</p>
+
+          <ion-item no-lines="none" *ngIf="detalle.hideShow==true">
+            <p style="text-align: justify;padding: 10px;" *ngFor="let det of detalle.detalle">{{det.descripcion}}</p>
+          </ion-item>
+
           <br>
           <p class="hide-show" (click)="hideShow(detalle)" *ngIf="detalle.hideShow==true">&nbsp;&nbsp;Ver menos <span
             class="icon mif-chevron-thin-up"></span></p>
@@ -162,8 +162,9 @@
         </div>
 
         <div *ngIf="opcionSeleccionado=='msg'">
-          <ion-card *ngFor="let detalle of listMensajeria | paginate: { itemsPerPage: 5, currentPage: pageHistorialMsg }"
-                    class="{{detalle.class}} card-md">
+          <ion-card
+            *ngFor="let detalle of listMensajeria | paginate: { itemsPerPage: 5, currentPage: pageHistorialMsg }"
+            class="{{detalle.class}} card-md">
             <br>
             <table width="100%">
               <tr>
